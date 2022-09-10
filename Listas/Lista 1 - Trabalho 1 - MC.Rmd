@@ -1,0 +1,299 @@
+---
+title: "Lista 1"
+author: "Maria Vitória Cruz"
+date: "Setembro de 2022"
+documentclass: article
+papersize: a4
+fontsize: 12pt
+linestretch: 1.5
+geometry: "left = 1.0in, right = 1.0in, top = 1.0in, bottom = 1.0in"
+indent: true
+output:
+  bookdown::pdf_document2:
+    toc: false
+    latex_engine: pdflatex
+    number_sections: true
+    extra_dependencies:
+      fontenc: ["T1"]
+      inputenc: ["utf8"]
+      babel: ["english, latin, brazil"]
+      lipsum: null
+      float: null
+      booktabs: null
+      threeparttable: null
+      array: null
+      graphicx: null
+      tabularx: null
+      adjustbox: null
+      amsmath: null
+      amssymb: null
+      amsthm: null
+header-includes:
+  - \usepackage{floatrow}
+  - \floatsetup[figure]{capposition=top}
+  - \floatsetup[table]{style=plaintop}
+  - \usepackage{hyperref}
+  - \hypersetup{colorlinks=true, urlcolor=blue, linkcolor=blue, citecolor=blue, filecolor=blue}
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Prova SEM2.2015 - Exercício 1
+O indivíduo tem função de utilidade dada por:
+$$u(c,l) = c^{\frac{1}{2}}l^{\frac{1}{2}}$$
+
+Temos que $l_{0} = 24$ é a dotação de tempo para alocar entre trabalho e lazer e $h = l_{0} - l$ são as horas que o indivíduo trabalha. Com salário por hora dado po $w=10$ e renda do não trabalho dada por $m=60$, temos:
+
+## Questão 1A
+
+A restrição orçamentária é dada por:
+$$c \leq hw + m$$
+$$c \leq (24 - l)*10 + 60 \implies c \leq 240 - 10l +60$$
+
+$$c \leq 300 - 10l$$
+
+## Questão 1B
+
+No nível ótimo de lazer e consumo o agente consome o máximo possível, por isso consideramos a restrição orçamentária como $c = 300 - 10l$.
+
+$$\max_{c,l} \; c^{\frac{1}{2}}l^{\frac{1}{2}} \; s.a. c = 300 - 10l$$
+$$\max_{l} \; (300 - 10l)^{\frac{1}{2}}l^{\frac{1}{2}}$$
+$$\frac{dU}{dl} = -5(300 - 10l)^{-\frac{1}{2}}l^{\frac{1}{2}} + \frac{1}{2}l^{-\frac{1}{2}}(300 - 10l)^{\frac{1}{2}}$$
+$$\frac{dU}{dl} = \frac{-5\sqrt{l}}{\sqrt{300 - 10l}} + \frac{\sqrt{(300 - 10l)}}{2\sqrt{l}}$$
+$$\frac{dU}{dl} = \frac{-10l+300 - 10l}{\sqrt{(300 - 10l)}2\sqrt{l}}$$
+$$\frac{dU}{dl} = \frac{150 - 10l}{\sqrt{(300 - 10l)}\sqrt{l}}$$
+$$\frac{150 - 10l}{\sqrt{(300 - 10l)}\sqrt{l}} = 0$$
+$$150 - 10l= 0$$
+$$10l= 150 \implies l^{*} = 15 \; horas$$
+$$c = 300 - 10l \implies c^{*} = 150$$
+
+## Questão 1C
+
+Temos que o salário reserva é dado pela equação abaixo quando não há constrição de horas de trabalho:
+$$w^{r} = \frac{U_{c}}{U_{l}}\Big|_{(l_{0},m)}$$
+$$w^{r} = \frac{0.5c^{-1/2}l^{1/2}}{0.5c^{1/2}l^{-1/2}}\Big|_{(l_{0},m)}$$
+
+$$w^{r} = \frac{l}{c}\Big|_{(l_{0},m)}$$
+$$w^{r} = \frac{l}{hw + m}\Big|_{(l_{0},m)}$$
+$$w^{r} = \frac{l}{(l_{0} - l)w + m}\Big|_{(l_{0},m)}$$
+$$w^{r} = \frac{l_{0}}{m} \implies w^{r} = \frac{24}{60} = 0.4$$
+
+
+## Questão 1D
+
+O gráfico apresenta uma curva de oferta de trabalho que é convexa e indica que antes do máximo o efeito de aumentar as horas trabalhadas gera um salário maior até o ponto em que a quantidade de horas trabalhadas é maior que a ótima e as pessoas só aceitam trocar o lazer por trabalho quando o salário é maior.
+
+## Questão 1E
+
+O prêmio por hora extra deve ser de 7,5 unidades de consumo a hora.
+
+## Questão 1F
+
+No cenário de uma mulher com filho em idade de creche com custo da creche $F_{c}$ a sua restrição de tempo é dada por $h = l_{0} - l - b$ sendo b o tempo de cuidado do filho, no caso em que não há custo de creche a mulher cuida de seu filho por b horas e não pode trabalhar durante essas b horas fixas. No caso em que há o custo com creche a restrição orçamentária inclui o custo da creche $F_{c}$ mas as horas fixas b não são descontadas, portanto, tem-se:
+
+$$\left\{\begin{matrix}
+c + F_{c} = wh+ m, \;\; se \;\; h = l_{0} - l\\ 
+c = wh+ m, \;\; se \;\; h = l_{0} - l - \bar{b}
+\end{matrix}\right.$$
+
+Ela decidiria a quantidade de horas que iria dedicar ao trabalho baseada nas suas restrições maximizando cada um deles e vendo em qual ela obteria a mior utilidade dados valores de c e l. O fato de dedicar horas de cuidado ao filho diminui o consumo, e o fato de gastar com a creche diminui a proporção da renda que se destina ao consumo. Tudo dependeria de quantas são as horas e custo fixo da creche.
+
+
+# Prova SEM1.2016 - Exercício 2
+## Questão 2A
+
+Tem-se uma firma monopsonista que escolhe um salário que maximiza o seu lucro $\pi = (p-w)L$, sendo L a oferta de trabalho agregada e só opera a $p  \geq w$.
+
+$$\max_{w,L} \; \pi = (p-w)L \;\;\; s.a. \;\;\ L(w)^{s} = w^{1/\epsilon}$$
+$$\max_{w,L} \; \pi = (p-w)L \;\;\; s.a. \;\; w = L^{\epsilon}$$
+$$\max_{L} \; \pi = (p-L^{\epsilon})L$$
+$$\max_{L} \; \pi = pL -L^{\epsilon+1}$$
+$$\frac{d\pi}{dL} = p - (\epsilon + 1) L^{\epsilon}$$
+
+$$L^{\epsilon} = \frac{p}{(\epsilon + 1)} \;\; \land w = L^{\epsilon} \implies w = \frac{p}{(\epsilon + 1)}$$
+
+## Questão 2B
+
+Quando o salário aumenta o preço deve aumentar igualmente pois a elasticidade da oferta deve ser positiva, se for maior que um a firma não opera. Assim, movimentações no salário não deveriam afetar o lucro, um impacto negativo de aumento do salário no lucro seria rebatido com um aumento de preços.
+
+## Questão 2C
+
+Se a oferta de trabalho agregada é dada por $L(w)^{s} = (w - b)^{2}$, onde b é o valor do lazer. A função de salário é dada por:
+
+$$L = (w -b)^{2} \implies L^{1/2} = w-b \implies w(L,b) = L^{1/2} +b$$
+
+
+## Questão 2D
+A firma 1 tem como preço $p_{1} = 2b$ e a firma 2 tem como preço $p_{2} = 4b$.
+
+Para a firma 1, tem-se:
+$$\max_{w,L} \; \pi = (2b-w)L \;\;\; s.a. \;\;\ w= L^{1/2} +b$$
+$$\max_{L} \; \pi = (b-L^{1/2})L$$
+$$\max_{L} \; \pi = bL-L^{3/2}$$
+$$\frac{d\pi}{dL} = b - \frac{3}{2}L^{1/2}$$
+$$\frac{3}{2}L^{1/2}= b \implies L^{1/2}= \frac{2b}{3} \;\; \land L^{1/2} = w-b$$
+$$w-b= \frac{2b}{3} \implies w = \frac{2b}{3} + b \implies w_{1} = \frac{5b}{3}$$
+$$w_{1} = \frac{5b}{3} \;\;\; \land L_{1}= \frac{4b^{2}}{9}$$
+
+Para a firma 1, tem-se:
+$$\max_{w,L} \; \pi = (4b-w)L \;\;\; s.a. \;\;\ w= L^{1/2} +b$$
+$$\max_{L} \; \pi = 3bL-L^{3/2}$$
+$$\frac{d\pi}{dL} = 3b - \frac{3}{2}L^{1/2}$$
+$$\frac{3}{2}L^{1/2} = 3b \implies L^{1/2} = \frac{6b}{3} \implies L^{1/2} = 2b$$
+$$L^{1/2} = 2b \implies L_{2} = 4b^{2}$$
+$$L^{1/2} = 2b \;\; \land \;\; L^{1/2} + b = w \implies w_{2} = 3b$$
+
+$$w_{2} = 3b \;\;\; \land L_{2}= 4b^{2}$$
+
+Com um salário mínimo de $\bar{w} = b$, a firma 1 no ponto ótimo para mais que o salário mínimo e a firma 2 tem um salário ótimo maior que o salário mínimo, $w_{2} > w_{1} > \bar{w}$, para as firmas não há incentivo de diminuir o salário porque com o salário que maximiza o lucro delas é maior que o salátio mínimo, assim diminuir o salário das firmas geraria uma diminuição do lucro.
+
+O lucro da firma 1 quando maximiza-o é dado por:
+$$\pi_{1}^{c} = (2b-w_{1})L_{1} \implies \pi_{1}^{c} = (2b-\frac{5b}{3})\frac{4b^{2}}{9}$$
+$$\pi_{1}^{c} = \frac{1b}{3}\frac{4b^{2}}{9} \implies \pi_{1}^{c} = \frac{4b^{3}}{18}$$
+$$\pi_{1}^{c} \approx 0,2b^{3}$$
+
+$$\pi_{1}^{m} = (2b-\bar{w})\bar{L}$$
+$$\bar{L} = (\bar{w} - b)^{2} \implies \bar{L} = (b - b)^{2} \implies \bar{L} = 0$$
+$$\pi_{1}^{m} = 0$$
+
+O lucro da firma 2 quando maximiza-o é dado por:
+$$\pi_{2}^{c} = (4b-w_{2})L_{2} \implies \pi_{2}^{c} = (4b-3b)4b^{2}$$
+$$\pi_{2}^{c} = 4b^{3}$$
+E sabemos que o lucro da firma 2 em saláro mínimo será o mesmo que da firma 1:
+
+$$\pi_{2}^{m} = 0$$
+Portanto, com o salário mínimo de $\bar{w} = b$ ambas firmas continuam a pagar seus salários maximizadores de lucros, se a oferta de trabalho é homogênea, provavelmente a firma 2 retém mais trabalhadores pelo maior salário ofertado.
+
+## Questão 2E
+
+Agora o salário mínimo é de $\bar{w}= 2b$, os salários ótimos e lucros devem ser os mesmos para as firmas já que mantiveram os preços.
+
+Os lucros com salário mínimo são dados por:
+
+$$\bar{L} = (\bar{w} - b)^{2} \implies \bar{L} = (2b - b)^{2} \implies \bar{L} = b^{2}$$
+
+A firma 1 está disposta a pagar o salário $w_{1} = \frac{5b}{3}$ já que $\pi_{1}^{c} \approx 0,2b^{3} > \bar{L} = b^{2}$, entretanto, $w_{1} < \bar{w}$, portanto a empresa a obrigada a pagar o salário mínimo e fica com lucro de $\bar{L} = b^{2}$ que é menor do que quando o maximiza, de qualquer forma ela continua operando porque $p_{1} = \bar{w}$.
+
+A firma 2 tem salário que maximiza o lucro dado por $w_{2} = 3b$ que é maior que o salário mínimo, portanto, continua com seu salário que maximiza o seu lucro, afinal $L_{2}= 4b^{2} > \bar{L} = b^{2}$.
+
+## Questão 2F
+A firma 1 tem um poder de monopsônio menor que a firma 2 afinal ela está mais exposta a ser influenciada por um salário mínimo e perder parte do lucro.
+
+$$\frac{p_{1} - w_{1}}{w_{1}} = \frac{2b - \frac{5b}{3}}{\frac{5b}{3}}$$
+
+$$\frac{p_{1} - w_{1}}{w_{1}} = \frac{\frac{b}{3}}{\frac{5b}{3}}$$
+
+$$\frac{p_{1} - w_{1}}{w_{1}} = \frac{b}{3}\frac{3}{5b} \implies \frac{p_{1} - w_{1}}{w_{1}} = \frac{1}{5}$$
+
+
+$$\frac{p_{2} - w_{2}}{w_{2}} = \frac{4b - 3b}{3b}$$
+$$\frac{p_{2} - w_{2}}{w_{2}} = \frac{b}{3b}$$
+$$\frac{p_{2} - w_{2}}{w_{2}} = \frac{1}{3}$$
+
+Assim $\frac{p_{2} - w_{2}}{w_{2}} >\frac{p_{1} - w_{1}}{w_{1}}$ mostra que a firma 2 tem mais poder do que a firma 1.
+
+# Prova SEM2.2017 - Exercício 1(a)-(c)
+
+A receita das firmas é dada por $f(L) =  \frac{A}{1 - \eta}L^{1- \eta}$, onde L é o insumo de trabalho, A é um parâmetro de tecnologia constante e $\eta \in [0,1)$ é o inverso da elasticidade da demanda de trabalho. Dada uma função de oferta de trabalho $L^{s} = w^{\frac{1}{\epsilon}}$ com $\epsilon$ como inverso da elasticidade de trabalho.
+
+## Questão 3A
+
+O equilíbrio de mercado vem da maximização de bem-estar da economia como um todo. Para o lado da demanda temos que a firma tem como função objetivo o seu lucro:
+
+$$EC = \frac{A}{1 - \eta}L^{1- \eta} -  wL$$
+Para o lado da oferta, o excedente dos trabalhadores é dado por:
+
+$$EP = wL - \frac{L^{\epsilon + 1}}{\epsilon + 1}$$
+Assim para maximizar a utilizade da economia e chegar no equilíbrio em mercado competitivo, sabemos que é equivalente pelo Primeiro Teorema do Bem-Estar, temos que maximizar EC + EP.
+
+$$\max_{L} \; EC + EP = \frac{A}{1 - \eta}L^{1- \eta} -  wL + wL - \frac{L^{\epsilon + 1}}{\epsilon + 1}$$
+
+$$\max_{L} \; EC + EP = \frac{A}{1 - \eta}L^{1- \eta} - \frac{L^{\epsilon + 1}}{\epsilon + 1}$$
+
+$$\frac{dEC+EP}{dL} = \frac{A(1- \eta)}{1 - \eta}L^{- \eta} -(\epsilon + 1) \frac{L^{\epsilon}}{\epsilon + 1}$$
+$$\frac{dEC+EP}{dL} = AL^{- \eta} - L^{\epsilon}$$
+$$AL^{- \eta} - L^{\epsilon} = 0$$
+$$A= \frac{L^{\epsilon}}{L^{- \eta}}$$
+$$A= L^{\epsilon + \eta} \implies L_{c} = A^{\frac{1}{\epsilon + \eta}}$$
+
+Portanto, temos que o salário é de $w_{c} =  A^{\frac{\epsilon}{\epsilon + \eta}}$.
+
+## Questão 3B
+
+Em monopsônio a firma maximiza seu lucro com restrição da oferta de trabalho, mas tem poder suficiente para determinar o salário.
+
+$$\max_{w,L} \; \pi = \frac{A}{1 - \eta}L^{1- \eta} -  wL\;\;\; s.a. \;\;\ L^{s} = w^{\frac{1}{\epsilon}}$$
+
+$$\max_{w,L} \; \pi = \frac{A}{1 - \eta}L^{1- \eta} -  wL\;\;\; s.a. \;\;\ w = L^{\epsilon}$$
+
+$$\max_{L} \; \pi = \frac{A}{1 - \eta}L^{1- \eta} -  (L^{\epsilon})L$$
+
+
+$$\max_{L} \; \pi = \frac{A}{1 - \eta}L^{1- \eta} -  L^{\epsilon +1}$$
+
+$$\frac{d\pi}{dL} = \frac{A(1- \eta)}{1 - \eta}L^{- \eta} - (1+ \epsilon)L^{\epsilon}$$
+
+
+$$AL^{- \eta} - (1+ \epsilon)L^{\epsilon} = 0 \implies AL^{- \eta} = (1+ \epsilon)L^{\epsilon}$$
+
+$$\frac{L^{\epsilon}}{L^{-\eta}} = \frac{A}{(1+ \epsilon)}$$
+$$L^{\epsilon +\eta}= \frac{A}{(1+ \epsilon)}$$
+
+$$L_{m}= \frac{A}{(1+ \epsilon)}^\frac{1}{\epsilon +\eta}$$
+$$w_{m}= \frac{A}{(1+ \epsilon)}^\frac{\epsilon}{\epsilon +\eta}$$
+
+
+## Questão 3C
+
+Ao introduzir um salário mínimo $\bar{w}$ a depender do seu nível pode influenciar o mercado. Se $\bar{w} \leq w_{c}$ o mercado competitivo continua o mesmo, se $\bar{w} > w_{c}$ as firmas vão pagar um salário maior que o que maximiza seus lucros. O mesmo acontece para as firmas em monopsônio. De qualquer forma, em monopsônio, as firmas tendem a perder seus lucros e aumentarem seus salários mais facilmente pois $w_{m} < w_{c}$
+
+# Prova SEM1.2018 - Exercício 2
+## Questão 4A
+
+A curva de demanda por trabalho é dada por $L = 1500 - 2w$ e a curva de oferta é dada por $L = 3w$.
+
+Para o equilíbrio temos que o nível de emprego e salário devem se equilibrar no mercado, portanto:
+$$L^{d} = L^{s} \implies 1500 - 2w = 3w \implies 5w= 1500 \implies w^{c} = 300$$
+$$w = 300 \implies L^{c}= 900$$
+
+## Questão 4B
+
+O sindicato tem função objetivo $U(w,L) = wL$ e a restrição é dada pela demanda da firma.
+$$\max_{w,L} \; wL \;\;\; s.a. \;\;\ L = 1500 - 2w$$
+$$\max_{w} \; 1500w - 2w^{2}$$
+
+$$\frac{dU}{dw} = 1500 - 4w$$
+$$1500 = 4w \implies w = 375$$
+$$L = 1500 - 2w \;\; \land \;\; w^{m} = 375 \implies L^{m} =750$$
+
+
+## Questão 4C
+
+Temos que em mercado competitivo o salário e nível de emprego são dados por $w^{c} = 300 \;\; \land \;\;  L^{c}= 900$ enquanto no cenário de sindicato monopolista temos que o salário e o nível de emprego são $w^{m} = 375 \;\;\ \land \;\; L^{m} =750$. Assim, no mercado competitivo o salário é menor e o nível de emprego é maior, isso indica que quando o sindicato tem poder de barganha os trabalhadores ficam com maior parte do bem-estar dessa sociedade aumentando seu excedente do produtor.
+
+## Questão 4D
+
+O desemprego é dado por $u =L^{c} - L^{m} \implies u =900 -750 \implies u = 150$
+
+## Questão 4E
+
+A demanda por trabalho é dada por $L^{d} = 2100 - 4w$, portanto o novo equilíbrio competitivo é dado por:
+
+$$L^{d} = L^{s} \implies 2100 - 4w = 3w  \implies 7w = 2100 \implies w^{c} =300$$
+E temos que $L^{c} = 900$.
+
+O equilíbrio sindical é dado por:
+$$\max_{w,L} \; wL \;\;\; s.a. \;\;\ L^{d} = 2100 - 4w$$
+$$\max_{w} \; 2100w - 4w^{2}$$
+
+$$\frac{dU}{dw}= 2100 - 8w \implies w^{m} =262,5$$
+E temos que $L^{m} = 1050$.
+
+O equilíbrio competitivo é o mesmo que a primeira demanda, entretanto, no cenário de monopólio sindical o salário é menor e a quantidade de trabalho é maior. Parece que um monopólio sindical afeta mais os trabalhadores quando a demanda por trabalho é maior, pois contrata mais pessoas mas há um salário menor.
+
+O desemprego no primeiro cenário é dado por $u_{1} = 150$ enquanto no segundo cenário é dado por $u_{2} = -150$, pois há um aumento de emprego.
+
+A razão econômica é de que quando a demanda é maior, o preço do trabalho será menor e a quantidade de trabalho, seguindo a definição da curva da demanda.
